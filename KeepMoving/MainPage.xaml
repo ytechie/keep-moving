@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="KeepMoving.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+                Sitting for extended periods can be as
+                <Hyperlink FontSize="24"
+                             NavigateUri="http://blogs.denverpost.com/fitness/2014/02/17/sitting-as-dangerous-as-cigarette-smoking-for-you/13637/">
+                    dangerous as smoking
+                </Hyperlink>
+            </TextBlock>
+            
+            
+            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+                This app will notify you when you have been sitting too long. The motion chip in your phone allows this app to monitor your activity in the background without effecting battery life.
+            </TextBlock>
+            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+                Don't worry, notifications will be automatically disabled during quiet hours, or when your phone is not with you.
+            </TextBlock>
+
+            <ToggleSwitch x:Name="NotifcationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
+        </StackPanel>
+    </Grid>
+</Page>
