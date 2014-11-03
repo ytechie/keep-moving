@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EFAA9AE4-5691-4508-8B76-C449B2C30751}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KeepMoving.Background</RootNamespace>
     <AssemblyName>KeepMoving.Background</AssemblyName>
@@ -94,6 +94,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
