@@ -111,3 +111,4 @@ UpgradeLog*.XML
 *.nupkg
 .nuget/NuGet.exe
 KeepMoving.Framework/Help/LumiaSensorCoreSDK.chm
+KeepMoving/BundleArtifacts/arm.txt
