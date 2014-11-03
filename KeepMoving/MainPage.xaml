@@ -8,8 +8,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+        <StackPanel Orientation="Vertical" Margin="10 10 10 10">
+            <TextBlock Margin="0 10 0 10" TextWrapping="WrapWholeWords" FontSize="24">
                 Sitting for extended periods can be as
                 <Hyperlink FontSize="24"
                              NavigateUri="http://blogs.denverpost.com/fitness/2014/02/17/sitting-as-dangerous-as-cigarette-smoking-for-you/13637/">
@@ -18,15 +18,16 @@
             </TextBlock>
             
             
-            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+            <TextBlock Margin="0 10 0 10" TextWrapping="WrapWholeWords" FontSize="24">
                 This app will notify you when you have been sitting too long. The motion chip in your phone allows this app to monitor your activity in the background without affecting battery life.
             </TextBlock>
-            <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
+            <TextBlock Margin="0 10 0 10" TextWrapping="WrapWholeWords" FontSize="24">
                 Don't worry, notifications will be automatically disabled during quiet hours, or when your phone is not with you.
             </TextBlock>
 
-            <ToggleSwitch x:Name="NotifcationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
-            <Button Visibility="Collapsed" x:Name="CheckActivityButton" Click="CheckActivityButton_OnClick">Check Activity Now</Button>
+            <ToggleSwitch Margin="0 10 0 10" x:Name="NotifcationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
+            <Button Margin="0 10 0 10" Visibility="Collapsed" x:Name="CheckActivityButton" Click="CheckActivityButton_OnClick">Check Activity Now</Button>
+            <Button Margin="0 10 0 10" x:Name="FeedbackButton" Click="FeedbackButton_OnClick">Provide Feedback</Button>
         </StackPanel>
     </Grid>
 </Page>

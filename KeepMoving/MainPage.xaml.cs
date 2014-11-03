@@ -1,4 +1,6 @@
-﻿using Windows.Storage;
+﻿using System;
+using Windows.ApplicationModel.Email;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -66,6 +68,15 @@ namespace KeepMoving
         private async void CheckActivityButton_OnClick(object sender, RoutedEventArgs e)
         {
             await Sensor.DoStuff();
+        }
+
+        private async void FeedbackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var em = new EmailMessage();
+            em.To.Add(new EmailRecipient("jason@ytechie.com", "Jason Young"));
+            em.Subject = "Keep Moving Feedback";
+
+            await EmailManager.ShowComposeNewEmailAsync(em);
         }
     }
 }
