@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -26,6 +27,8 @@ namespace KeepMoving
             {
                 BackgroundReadTask.Register();
             }
+
+            NotifcationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
         }
 
         /// <summary>
@@ -57,7 +60,12 @@ namespace KeepMoving
 
         private void NotifcationsEnabledSwitch_OnToggled(object sender, RoutedEventArgs e)
         {
-            //NotifcationsEnabledSwitch.
+            Settings.SetTrackingEnabled(NotifcationsEnabledSwitch.IsOn);
+        }
+
+        private async void CheckActivityButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            await Sensor.DoStuff();
         }
     }
 }

@@ -19,13 +19,14 @@
             
             
             <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
-                This app will notify you when you have been sitting too long. The motion chip in your phone allows this app to monitor your activity in the background without effecting battery life.
+                This app will notify you when you have been sitting too long. The motion chip in your phone allows this app to monitor your activity in the background without affecting battery life.
             </TextBlock>
             <TextBlock Margin="10 10 10 10" TextWrapping="WrapWholeWords" FontSize="24">
                 Don't worry, notifications will be automatically disabled during quiet hours, or when your phone is not with you.
             </TextBlock>
 
             <ToggleSwitch x:Name="NotifcationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
+            <Button Visibility="Collapsed" x:Name="CheckActivityButton" Click="CheckActivityButton_OnClick">Check Activity Now</Button>
         </StackPanel>
     </Grid>
 </Page>

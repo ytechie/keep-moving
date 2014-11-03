@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Windows.ApplicationModel.Background;
+using KeepMoving.Framework;
 
 namespace KeepMoving.Background
 {
@@ -12,6 +13,11 @@ namespace KeepMoving.Background
 
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
+            if(!Settings.GetTrackingEnabled())
+            {
+                return;
+            }
+
             _deferral = taskInstance.GetDeferral();
 
             await Framework.Sensor.DoStuff();
