@@ -31,23 +31,19 @@ namespace KeepMoving.Framework
             {
                 Toast.ClearToast();
             }
-
-#if !DEBUG
-            SendDiagnosticData(history);
-#endif
         }
 
-        private static async void SendDiagnosticData(IList<ActivityMonitorReading> history)
-        {
-            var historyJson = JsonConvert.SerializeObject(history);
-            const string url = "http://keepmovingweb.azurewebsites.net/api/wakeevent/";
+        //private static async void SendDiagnosticData(IList<ActivityMonitorReading> history)
+        //{
+        //    var historyJson = JsonConvert.SerializeObject(history);
+        //    const string url = "http://keepmovingweb.azurewebsites.net/api/wakeevent/";
 
-            var client = new HttpClient();
-            var content = new StringContent("\"" + WebUtility.HtmlEncode(historyJson) + "\"");
+        //    var client = new HttpClient();
+        //    var content = new StringContent("\"" + WebUtility.HtmlEncode(historyJson) + "\"");
 
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await client.PostAsync(url, content);
-        }
+        //    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //    var response = await client.PostAsync(url, content);
+        //}
 
         public static async Task<IEnumerable<ActivityMonitorReading>> GetHistory()
         {
