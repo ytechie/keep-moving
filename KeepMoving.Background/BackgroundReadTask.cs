@@ -11,6 +11,10 @@ namespace KeepMoving.Background
 
         private const string BackgroundTaskName = "BackgroundReadTask";
 
+        // The amount of time the app can be closed before needing to be
+        // reopened to renew the background task
+        private static readonly TimeSpan BackgroundTimeoutLimit = TimeSpan.FromDays(10);
+
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             if(!Settings.GetTrackingEnabled())
@@ -53,6 +57,16 @@ namespace KeepMoving.Background
                 Debug.WriteLine("Error while registering background task: ", ex.Message);
             }
 
+        }
+
+        private static void CheckLastOpenTime()
+        {
+            var lastOpened = Settings.GetApplicationOpenTime();
+
+            if (lastOpened < DateTime.UtcNow.Subtract(BackgroundTimeoutLimit))
+            {
+                Toast.SendNotification("Please open Keep Moving so that it can continue to run in the background");
+            }
         }
     }
 }

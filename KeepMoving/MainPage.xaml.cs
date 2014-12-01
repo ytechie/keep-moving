@@ -24,6 +24,9 @@ namespace KeepMoving
 
         private async void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
+            //Track the last time we opened the app
+            Settings.UpdateApplicationOpenTime();
+
             var enable = await Sensor.CheckSensorCoreSupport();
             if (enable)
             {

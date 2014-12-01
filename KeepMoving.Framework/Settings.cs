@@ -1,4 +1,5 @@
-﻿using Windows.Storage;
+﻿using System;
+using Windows.Storage;
 
 namespace KeepMoving.Framework
 {
@@ -6,6 +7,7 @@ namespace KeepMoving.Framework
     {
         private const string DeviceSettingsContainerName = "DeviceSettings";
         private const string TrackingEnabledSettingName = "TrackingEnabled";
+        private const string LastOpenTimeSettingName = "LastOpened";
 
         public static void SetTrackingEnabled(bool enabled)
         {
@@ -28,6 +30,30 @@ namespace KeepMoving.Framework
             }
 
             return (bool) settingObj;
+        }
+
+        public static void UpdateApplicationOpenTime()
+        {
+            var settingsContainer = ApplicationData.Current.LocalSettings.CreateContainer(DeviceSettingsContainerName,
+    ApplicationDataCreateDisposition.Always);
+
+            settingsContainer.Values[LastOpenTimeSettingName] = DateTime.UtcNow;
+        }
+
+        //Gets the last time the app was run
+        public static DateTime GetApplicationOpenTime()
+        {
+            var settingsContainer = ApplicationData.Current.LocalSettings.CreateContainer(DeviceSettingsContainerName,
+    ApplicationDataCreateDisposition.Always);
+
+            var settingObj = settingsContainer.Values[LastOpenTimeSettingName];
+
+            if (settingObj == null)
+            {
+                return DateTime.UtcNow; //default
+            }
+
+            return (DateTime)settingObj;
         }
     }
 }
