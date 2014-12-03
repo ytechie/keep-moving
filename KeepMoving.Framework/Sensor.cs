@@ -23,7 +23,7 @@ namespace KeepMoving.Framework
 
             var timeSinceLastWalk = GetTimeSinceLastWalk(history, TimeSpan.FromSeconds(30));
 
-            if (timeSinceLastWalk.TotalMinutes > 20)
+            if (timeSinceLastWalk.TotalMinutes > Settings.GetTimeoutPeriod())
             {
                 Toast.SendStationaryNotification(timeSinceLastWalk);
             }
@@ -47,10 +47,10 @@ namespace KeepMoving.Framework
 
         public static async Task<IEnumerable<ActivityMonitorReading>> GetHistory()
         {
+            var timeoutPeriod = Settings.GetTimeoutPeriod() + 10;
             var activityMonitor = await ActivityMonitor.GetDefaultAsync();
-            var history = await activityMonitor.GetActivityHistoryAsync(DateTime.Now.AddMinutes(-30), TimeSpan.FromHours(.5));
-
-
+            var history = await activityMonitor.GetActivityHistoryAsync(DateTime.Now.AddMinutes(timeoutPeriod * -1), TimeSpan.FromMinutes(timeoutPeriod));
+            
             return history;
         }
 
