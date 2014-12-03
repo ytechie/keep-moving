@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel.Email;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -31,14 +32,13 @@ namespace KeepMoving
                 {
                     BackgroundReadTask.Register();
                 }
-
-                
-
             }
             catch(Exception ex)
             {
                 // TODO: Log the exception somehow.
                 // FOR_NOW: Eat the exception nom nom
+                //var dialog = new MessageDialog(ex.ToString());
+                //dialog.ShowAsync();
             }
             NotificationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
         }

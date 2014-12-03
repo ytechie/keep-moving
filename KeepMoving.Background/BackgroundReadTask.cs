@@ -41,7 +41,7 @@ namespace KeepMoving.Background
                 TaskEntryPoint = typeof(BackgroundReadTask).Namespace + "." + typeof(BackgroundReadTask).Name
             };
 
-            builder.SetTrigger(new TimeTrigger(10, false));
+            builder.SetTrigger(new TimeTrigger(15, false));
 
             try
             {
