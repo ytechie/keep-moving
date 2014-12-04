@@ -33,7 +33,7 @@
             <ScrollViewer>
                 <StackPanel>
                     <TextBlock Text="Timeout before alert:" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,0,0,12" />
-                    <Controls:NumericUpDown Name="TimeoutPeriod" Minimum="15" Maximum="180" ValueChanged="TimeoutPeriod_OnValueChanged" SmallChange="1" LargeChange="10" ValueBarVisibility="Visible" />
+                    <Controls:NumericUpDown Name="TimeoutPeriod" Minimum="15" Maximum="180" ValueChanged="TimeoutPeriod_OnValueChanged" SmallChange="1" LargeChange="10" ValueBarVisibility="Visible" ValueFormat="N0" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
