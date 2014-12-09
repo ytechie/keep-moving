@@ -32,8 +32,9 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <ScrollViewer>
                 <StackPanel>
-                    <TextBlock Text="Timeout before alert:" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,0,0,12" />
-                    <Controls:NumericUpDown Name="TimeoutPeriod" Minimum="15" Maximum="180" ValueChanged="TimeoutPeriod_OnValueChanged" SmallChange="1" LargeChange="10" ValueBarVisibility="Visible" ValueFormat="N0" />
+                    <TextBlock Text="How long should you be sitting/inactive before being notified?" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,0,0,12" TextWrapping="WrapWholeWords" />
+                    <Controls:NumericUpDown Name="TimeoutPeriod" Minimum="15" Maximum="120" ValueChanged="TimeoutPeriod_OnValueChanged" SmallChange="5"
+                                            LargeChange="10" ValueBarVisibility="Visible" ValueFormat="N0" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
