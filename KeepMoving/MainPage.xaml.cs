@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel.Email;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -24,13 +25,22 @@ namespace KeepMoving
 
         private async void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
-            var enable = await Sensor.CheckSensorCoreSupport();
-            if (enable)
+            try
             {
-                BackgroundReadTask.Register();
+                var enable = await Sensor.CheckSensorCoreSupport();
+                if (enable)
+                {
+                    BackgroundReadTask.Register();
+                }
             }
-
-            NotifcationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
+            catch(Exception ex)
+            {
+                // TODO: Log the exception somehow.
+                // FOR_NOW: Eat the exception nom nom
+                //var dialog = new MessageDialog(ex.ToString());
+                //dialog.ShowAsync();
+            }
+            NotificationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
         }
 
         /// <summary>
@@ -62,7 +72,7 @@ namespace KeepMoving
 
         private void NotifcationsEnabledSwitch_OnToggled(object sender, RoutedEventArgs e)
         {
-            Settings.SetTrackingEnabled(NotifcationsEnabledSwitch.IsOn);
+            Settings.SetTrackingEnabled(NotificationsEnabledSwitch.IsOn);
         }
 
         private async void CheckActivityButton_OnClick(object sender, RoutedEventArgs e)
@@ -77,6 +87,11 @@ namespace KeepMoving
             em.Subject = "Keep Moving Feedback";
 
             await EmailManager.ShowComposeNewEmailAsync(em);
+        }
+
+        private void SettingsAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SettingsPage));
         }
     }
 }

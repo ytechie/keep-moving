@@ -25,9 +25,17 @@
                 Don't worry, notifications will be automatically disabled during quiet hours, or when your phone is not with you.
             </TextBlock>
 
-            <ToggleSwitch Margin="0 10 0 10" x:Name="NotifcationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
+            <ToggleSwitch Margin="0 10 0 10" x:Name="NotificationsEnabledSwitch" Toggled="NotifcationsEnabledSwitch_OnToggled" />
             <Button Margin="0 10 0 10" Visibility="Collapsed" x:Name="CheckActivityButton" Click="CheckActivityButton_OnClick">Check Activity Now</Button>
             <Button Margin="0 10 0 10" x:Name="FeedbackButton" Click="FeedbackButton_OnClick">Provide Feedback</Button>
         </StackPanel>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Settings" Icon="Setting" Click="SettingsAppBarButton_Click"></AppBarButton>
+            </CommandBar.SecondaryCommands>
+            
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
