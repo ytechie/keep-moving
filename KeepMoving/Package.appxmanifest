@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="YoungTechnologiesLLC.KeepMoving" Publisher="CN=D1E7D820-A49D-46E8-AE32-877257A6B540" Version="1.1.0.0" />
+  <Identity Name="YoungTechnologiesLLC.KeepMoving" Publisher="CN=D1E7D820-A49D-46E8-AE32-877257A6B540" Version="1.1.0.2" />
   <mp:PhoneIdentity PhoneProductId="901cc190-56c9-469e-af73-09bde626de6b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Keep Moving</DisplayName>
