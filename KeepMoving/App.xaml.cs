@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Mindscape.Raygun4Net;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -39,6 +40,8 @@ namespace KeepMoving
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
             UnhandledException += OnUnhandledException;
+
+            RaygunClient.Attach("fR87yXCJfg88Xi6rpV0k0g==");
         }
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
