@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Navigation;
 
 using KeepMoving.Background;
 using KeepMoving.Framework;
+using Mindscape.Raygun4Net;
 
 namespace KeepMoving
 {
@@ -35,10 +36,7 @@ namespace KeepMoving
             }
             catch(Exception ex)
             {
-                // TODO: Log the exception somehow.
-                // FOR_NOW: Eat the exception nom nom
-                //var dialog = new MessageDialog(ex.ToString());
-                //dialog.ShowAsync();
+                RaygunClient.Current.SendAsync(ex);
             }
             NotificationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
         }
