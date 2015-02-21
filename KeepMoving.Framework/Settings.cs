@@ -16,7 +16,7 @@ namespace KeepMoving.Framework
 
         public static bool GetTrackingEnabled()
         {
-            return GetSetting<bool>(TrackingEnabledSettingName);
+            return GetSetting(TrackingEnabledSettingName, true);
         }
 
         public static void SetTimeoutPeriod(int newValue)
@@ -32,6 +32,11 @@ namespace KeepMoving.Framework
 
         private static T GetSetting<T>(string settingName)
         {
+            return GetSetting<T>(settingName, default(T));
+        }
+
+        private static T GetSetting<T>(string settingName, T defaultValue)
+        {
             var settingsContainer = ApplicationData.Current.LocalSettings.CreateContainer(DeviceSettingsContainerName,
                 ApplicationDataCreateDisposition.Always);
 
@@ -39,7 +44,7 @@ namespace KeepMoving.Framework
 
             if (settingObj == null)
             {
-                return default(T); //default
+                return defaultValue;
             }
 
             return (T)settingObj;
