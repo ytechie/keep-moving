@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Notifications;
 using KeepMoving.Framework;
+using Mindscape.Raygun4Net;
 
 namespace KeepMoving.Background
 {
@@ -25,8 +27,22 @@ namespace KeepMoving.Background
             _deferral.Complete();
         }
 
+        private static void InitRaygun()
+        {
+            try
+            {
+                RaygunClient.Attach("fR87yXCJfg88Xi6rpV0k0g==");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error registering Raygun: " + ex.ToString());
+            }
+        }
+
         public async static void Register()
         {
+            InitRaygun();
+
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
                 if (task.Value.Name == BackgroundTaskName)
@@ -46,11 +62,19 @@ namespace KeepMoving.Background
             try
             {
                 var status = await BackgroundExecutionManager.RequestAccessAsync();
-                var registration = builder.Register();
+                if (status == BackgroundAccessStatus.Denied || status == BackgroundAccessStatus.Unspecified)
+                {
+                    throw new Exception("Invalid status when registering background task: " + status);
+                }
+                builder.Register();
+
+#if DEBUG
+                Toast.SendNotification("Background Task Registered");
+#endif
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error while registering background task: ", ex.Message);
+                RaygunClient.Current.Send(ex);
             }
 
         }

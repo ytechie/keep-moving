@@ -36,7 +36,7 @@ namespace KeepMoving
             }
             catch(Exception ex)
             {
-                RaygunClient.Current.SendAsync(ex);
+                RaygunClient.Current.Send(ex);
             }
             NotificationsEnabledSwitch.IsOn = Settings.GetTrackingEnabled();
         }
