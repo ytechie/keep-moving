@@ -35,17 +35,30 @@
     </Application>
   </Applications>
   <Extensions>
+    <!-- These extensions have to do with oddities in VS update 4 -->
+    <!-- http://answers.flyppdevportal.com/categories/winphone/wpdevelop.aspx?ID=6ea4cbbc-8649-462e-9ea2-8cfbeac672e7 -->
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
-        <Path>CLRHost.dll</Path>
-        <ActivatableClass ActivatableClassId="BackgroundTasks.Helper" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="BackgroundTasks.StepTriggerTask" ThreadingModel="both" />
+        <Path>Lumia.Sense.dll</Path>
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Place" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.SenseHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitor" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.SenseTrigger" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitorReading" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCount" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.PlaceMonitor" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.TrackPointMonitor" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.TrackPoint" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounterReading" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
-        <Path>Lumia.Sense.dll</Path>
-        <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitor" ThreadingModel="both" />
+        <Path>Lumia.Internal.HMBClient.dll</Path>
+        <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBMessage" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBServiceClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBMessageEventArgs" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
