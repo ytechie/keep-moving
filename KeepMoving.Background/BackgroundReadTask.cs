@@ -22,7 +22,16 @@ namespace KeepMoving.Background
 
             _deferral = taskInstance.GetDeferral();
 
-            await Framework.Sensor.DoStuff();
+            InitRaygun();
+            try
+            {
+                await Sensor.DoStuff();
+            }
+            catch (Exception ex)
+            {
+                RaygunClient.Current.Send(ex);
+                throw;
+            }
 
             _deferral.Complete();
         }
